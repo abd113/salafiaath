@@ -4,23 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bestelling aanvragen | Salafiaath</title>
-  <meta name="description" content="Vraag eenvoudig een handgemaakte lange khimaar aan bij Salafiaath. Vul het formulier in – wij nemen contact met je op.">
+  <meta name="description" content="Vraag een handgemaakte lange khimaar aan bij Salafiaath. Vul het formulier in – wij nemen contact met je op.">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="container nav">
-      <a href="index.html" class="logo">Salafiaath <span>| modest wear</span></a>
+      <a href="index.html" class="logo">
+        <span class="logo-mark">S</span>
+        Salafiaath <span>| modest wear</span>
+      </a>
       <button class="menu-toggle" aria-label="Menu openen" id="menuToggle">
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links" id="navLinks">
         <a href="index.html">Home</a>
-        <a href="index.html#over">Over ons</a>
-        <a href="index.html#diensten">Diensten</a>
-        <a href="bestellen.html" class="nav-cta active">Bestelling aanvragen</a>
+        <a href="index.html#collectie">Collectie</a>
+        <a href="bestellen.html" class="active">Bestellen</a>
+        <a href="index.html#over">Over Ons</a>
+        <a href="index.html#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -30,8 +33,8 @@
       <div class="container">
         <h1>Bestelling aanvragen</h1>
         <p>
-          Vul onderstaand formulier in. Wij ontvangen je aanvraag en nemen zo snel mogelijk 
-          contact met je op om de details te bespreken. Er is nog geen betaling nodig.
+          Vul onderstaand formulier in. Wij ontvangen je aanvraag en nemen zo snel mogelijk
+          contact met je op. Er is nog geen betaling nodig. Je kunt ook via Instagram DM bestellen.
         </p>
       </div>
     </div>
@@ -39,27 +42,17 @@
     <section class="form-section">
       <div class="container">
         <div class="form-wrapper">
-          <!-- Progress indicator -->
           <div class="form-progress" id="formProgress">
             <div class="progress-step active" data-step="1"><span>1</span> Gegevens</div>
             <div class="progress-step" data-step="2"><span>2</span> Bestelling</div>
-            <div class="progress-step" data-step="3"><span>3</span> Extra info</div>
+            <div class="progress-step" data-step="3"><span>3</span> Extra</div>
           </div>
 
-          <!-- Form -->
-          <!-- 
-            BELANGRIJK VOOR E-MAIL:
-            Vervang action="https://formspree.io/f/XXXXXXX" door jouw eigen Formspree endpoint.
-            Maak een gratis account op https://formspree.io en koppel jouw e-mailadres.
-            Alternatief: gebruik EmailJS of Netlify Forms.
-          -->
           <form id="orderForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-            <!-- Hidden fields for email structure -->
             <input type="hidden" name="_subject" value="Nieuwe aanvraag via Salafiaath website">
             <input type="hidden" name="_template" value="table">
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-            <!-- STEP 1: Klantgegevens -->
             <div class="form-step active" data-step="1">
               <h2>Jouw gegevens</h2>
               <p class="step-desc">Vul je contactgegevens in zodat wij je kunnen bereiken.</p>
@@ -88,7 +81,6 @@
               </div>
             </div>
 
-            <!-- STEP 2: Bestelling -->
             <div class="form-step" data-step="2">
               <h2>Jouw bestelling</h2>
               <p class="step-desc">Vertel ons wat je wilt bestellen.</p>
@@ -103,6 +95,10 @@
                   <label class="radio-option">
                     <input type="radio" name="product" value="Lange khimaar (op maat / custom)">
                     Lange khimaar op maat / custom
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="product" value="Extra lange khimaar">
+                    Extra lange khimaar
                   </label>
                   <label class="radio-option">
                     <input type="radio" name="product" value="Anders / overleg">
@@ -141,7 +137,6 @@
               </div>
             </div>
 
-            <!-- STEP 3: Extra informatie -->
             <div class="form-step" data-step="3">
               <h2>Extra informatie</h2>
               <p class="step-desc">Vertel ons meer over je wensen of bijzonderheden.</p>
@@ -171,7 +166,6 @@
               </div>
             </div>
 
-            <!-- Navigation buttons -->
             <div class="form-nav" id="formNav">
               <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">Vorige</button>
               <button type="button" class="btn btn-primary" id="nextBtn">Volgende</button>
@@ -179,12 +173,11 @@
             </div>
           </form>
 
-          <!-- Success state -->
           <div class="form-success" id="formSuccess">
             <div class="icon">✓</div>
             <h2>Bedankt!</h2>
             <p>
-              We hebben je aanvraag goed ontvangen. We nemen zo snel mogelijk contact met je op 
+              We hebben je aanvraag goed ontvangen. We nemen zo snel mogelijk contact met je op
               om de bestelling verder te bespreken.
             </p>
             <p style="margin-top:1.5rem;">
@@ -192,23 +185,33 @@
             </p>
           </div>
         </div>
+
+        <p style="text-align:center; margin-top:2rem; font-size:0.9rem;">
+          Liever via Instagram?
+          <a href="https://www.instagram.com/salafiaath/" target="_blank" rel="noopener noreferrer">DM @salafiaath</a>
+        </p>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="logo">Salafiaath <span style="color:var(--color-accent)">| modest wear</span></div>
-          <p>Handgemaakte lange khimaars. Modest wear met zorg gemaakt in Nederland.</p>
+          <a href="index.html" class="logo">
+            <span class="logo-mark">S</span>
+            Salafiaath <span>| modest wear</span>
+          </a>
+          <p>Handgemaakte lange khimaars. Met zorg en precisie gemaakt in Nederland.</p>
+          <p class="footer-quote">“Stay tuned for more إن شاء الله”</p>
         </div>
         <div>
           <h3>Navigatie</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="bestellen.html">Bestelling aanvragen</a></li>
+            <li><a href="index.html#collectie">Collectie</a></li>
+            <li><a href="bestellen.html">Bestellen</a></li>
+            <li><a href="index.html#over">Over Ons</a></li>
           </ul>
         </div>
         <div>
@@ -220,6 +223,7 @@
                 Instagram @salafiaath
               </a>
             </li>
+            <li>DM to order 📦</li>
           </ul>
         </div>
       </div>
