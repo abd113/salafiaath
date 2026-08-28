@@ -7,78 +7,54 @@ Moderne, professionele website voor Salafiaath – handgemaakte lange khimaars (
 - **index.html** – Homepage
 - **bestellen.html** – Bestel-/aanvraagpagina met multi-step formulier
 
-## Belangrijk: e-mailinstelling (Formspree)
+## E-mail (aanvragen)
 
-Het formulier is voorbereid om e-mails te versturen via [Formspree](https://formspree.io) (gratis tot 50 inzendingen/maand).
+Alle bestelaanvragen worden verzonden naar:
 
-### Stappen om e-mail te activeren:
+**abshir.be@hotmail.com**
 
-1. Maak een gratis account op https://formspree.io
-2. Maak een nieuw formulier aan en koppel jouw e-mailadres
-3. Kopieer de Form ID (bijv. `xyzabcde`)
-4. Open `bestellen.html` en zoek deze regel:
+Het formulier gebruikt [FormSubmit](https://formsubmit.co).
 
-```html
-<form id="orderForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-```
+### Eerste keer activeren
 
-5. Vervang `YOUR_FORM_ID` door jouw echte Form ID.
+1. Vul het bestelformulier één keer in en verstuur een testaanvraag.
+2. FormSubmit stuurt een bevestigingsmail naar **abshir.be@hotmail.com**.
+3. Klik op de bevestigingslink in die mail.
+4. Daarna komen alle volgende aanvragen direct binnen.
 
-Daarna ontvangen jij (en eventueel de klant via Formspree-instellingen) de aanvragen per e-mail.
-
-### Alternatieven
-
-- **Netlify Forms** – als je de site op Netlify host
-- **EmailJS** – client-side e-mail zonder backend
-- Eigen backend (PHP, Node, etc.) later toevoegen
+Geen Formspree-account of extra configuratie nodig.
 
 ## Afbeeldingen vervangen
 
-Op de homepage staan placeholder-blokken met de tekst “Vervang dit…”.
+Op de homepage staan placeholder-blokken.
 
 Vervang deze door echte foto’s:
 
 1. Plaats je afbeeldingen in de map `images/`
-2. In `index.html` zoek je de `<div class="placeholder">` blokken
+2. In `index.html` zoek je de placeholder-blokken
 3. Vervang ze door bijvoorbeeld:
 
 ```html
 <img src="images/hero-khimaar.jpg" alt="Handgemaakte lange khimaar van Salafiaath">
 ```
 
-Zelfde voor de “Over ons”-foto.
-
 ## Kleuren / huisstijl
 
-De kleuren staan centraal in `css/style.css` onder `:root`. Pas daar de variabelen aan als je de huisstijl wilt wijzigen:
-
-- `--color-primary` – hoofdkleur (sage groen)
-- `--color-accent` – accent (warm zand)
-- `--color-bg` – achtergrond
+Zwart / antraciet / crème – zie `css/style.css` onder `:root`.
 
 ## Hosting
 
-Dit is een pure static site. Je kunt hem hosten op:
-
-- Netlify
-- Vercel
-- GitHub Pages
-- Eigen hosting / Cloudflare Pages
-
-Upload gewoon de hele map `salafiaath`.
+Static site – host op Netlify, Vercel, GitHub Pages of Cloudflare Pages.
 
 ## Later betaling toevoegen
 
-De huidige structuur (aanvraag → e-mail → handmatige afhandeling) is bewust zo gemaakt. Online betaling (Mollie, Stripe, etc.) kan later worden toegevoegd zonder de hele site opnieuw te bouwen – bijvoorbeeld door na de aanvraag een betaallink te sturen of een aparte checkout-pagina te maken.
+Huidige proces: aanvraag → e-mail → handmatige afhandeling. Online betaling kan later worden toegevoegd.
 
-## Contactgegevens
-
-Momenteel is alleen Instagram bekend:
+## Contact
 
 - Instagram: [@salafiaath](https://www.instagram.com/salafiaath/)
+- E-mail aanvragen: abshir.be@hotmail.com
 - Locatie: Nederland 🇳🇱
-
-Voeg later telefoonnummer en e-mailadres toe in de footer van beide pagina’s.
 
 ---
 
