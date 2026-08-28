@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
       else if (pStep < step) p.classList.add('completed');
     });
 
-    // Buttons
     prevBtn.style.visibility = step === 1 ? 'hidden' : 'visible';
     if (step === totalSteps) {
       nextBtn.style.display = 'none';
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
       submitBtn.style.display = 'none';
     }
 
-    // Scroll to top of form
     form.closest('.form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -50,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let valid = true;
     const requiredFields = stepEl.querySelectorAll('[required]');
 
-    // Clear previous errors in this step
     stepEl.querySelectorAll('.form-group').forEach(function (g) {
       g.classList.remove('error');
     });
@@ -120,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!validateStep(currentStep)) return;
 
-    // Extra safety: validate all required across form
     let allValid = true;
     for (let i = 1; i <= totalSteps; i++) {
       if (!validateStep(i)) {
@@ -132,14 +128,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (!allValid) return;
 
-    // Disable button to prevent double submit
     submitBtn.disabled = true;
     submitBtn.textContent = 'Versturen…';
 
-    // Use Formspree (or any endpoint set in action)
     const formData = new FormData(form);
-
-    // Add a readable summary for the email body
     const summary = buildEmailSummary(formData);
     formData.append('samenvatting', summary);
 
@@ -151,17 +143,27 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     })
       .then(function (response) {
-        if (response.ok) {
-          // Success
-          form.style.display = 'none';
-          formNav.style.display = 'none';
-          document.getElementById('formProgress').style.display = 'none';
-          formSuccess.classList.add('show');
-        } else {
-          return response.json().then(function (data) {
-            throw new Error(data.error || 'Er ging iets mis bij het versturen.');
-          });
-        }
+        return response.json().then(function (data) {
+          if (response.ok || data.success === 'true' || data.success === true) {
+            form.style.display = 'none';
+            formNav.style.display = 'none';
+            var prog = document.getElementById('formProgress');
+            if (prog) prog.style.display = 'none';
+            formSuccess.classList.add('show');
+          } else {
+            throw new Error(data.message || data.error || 'Er ging iets mis bij het versturen.');
+          }
+        }).catch(function (err) {
+          if (response.ok) {
+            form.style.display = 'none';
+            formNav.style.display = 'none';
+            var prog = document.getElementById('formProgress');
+            if (prog) prog.style.display = 'none';
+            formSuccess.classList.add('show');
+            return;
+          }
+          throw err;
+        });
       })
       .catch(function (err) {
         alert('Sorry, er is iets misgegaan bij het versturen van je aanvraag. Probeer het later opnieuw of neem contact op via Instagram @salafiaath.\n\nDetails: ' + (err.message || ''));
@@ -196,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function () {
     return lines.join('\n');
   }
 
-  // Live clear error on input
   form.addEventListener('input', function (e) {
     const group = e.target.closest('.form-group');
     if (group) group.classList.remove('error');
@@ -206,6 +207,5 @@ document.addEventListener('DOMContentLoaded', function () {
     if (group) group.classList.remove('error');
   });
 
-  // Init
   showStep(1);
 });
